@@ -11,10 +11,12 @@ import { FaFacebookSquare } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa6";
 import { AiFillGoogleSquare } from "react-icons/ai";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
 
     let { register, handleSubmit, formState:{errors},watch } = useForm();
+    let navigate = useNavigate();
 
     const password = watch("password");
 
@@ -28,6 +30,8 @@ const SignUp = () => {
 
         localStorage.setItem("users",JSON.stringify(users));
 
+        navigate("/home");
+
     }
 
     return (
@@ -37,7 +41,7 @@ const SignUp = () => {
                 <div className={Style.container}>
 
                     <div className={Style.card3}>
-                        <button>Login</button>
+                        <button onClick={()=>navigate("/login")}>Login</button>
                     </div>
 
                     <div className={Style.card1}>
